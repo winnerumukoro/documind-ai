@@ -12,7 +12,7 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # The Gemini model we want to use
-GEMINI_MODEL = "gemini-2.0-flash"  # This is free and very capable
+GEMINI_MODEL = "gemini-2.5-flash"  # This is free and very capable
 
 # Embedding model - this runs locally on your machine, no API needed
 EMBEDDING_MODEL = "all-MiniLM-L6-v2"  # Small, fast, and accurate

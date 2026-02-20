@@ -21,7 +21,7 @@ TEXTS_PATH = "./faiss_index/texts.pkl"
 def get_embedding(text):
     """Converts text into a vector using Gemini embedding API."""
     result = genai.embed_content(
-        model="models/text-embedding-004",
+        model="models/gemini-embedding-001",
         content=text,
         task_type="retrieval_document"
     )
@@ -31,7 +31,7 @@ def get_embedding(text):
 def get_query_embedding(text):
     """Converts a question into a vector."""
     result = genai.embed_content(
-        model="models/text-embedding-004",
+        model="models/gemini-embedding-001",
         content=text,
         task_type="retrieval_query"
     )

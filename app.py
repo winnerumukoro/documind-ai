@@ -43,18 +43,21 @@ st.markdown("""
         margin-bottom: 2rem;
     }
     .answer-box {
-        background-color: #f0f2f6;
-        border-left: 4px solid #667eea;
-        padding: 1.5rem;
-        border-radius: 8px;
-        margin: 1rem 0;
+    background-color: #1e1e2e;
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    color: #ffffff;
+            
     }
     .source-box {
-        background-color: #fff;
+        background-color: #1e1e2e;
         border: 1px solid #e0e0e0;
         padding: 1rem;
         border-radius: 8px;
         margin: 0.5rem 0;
+        color: #ffffff;
     }
     .success-box {
         background-color: #d4edda;
