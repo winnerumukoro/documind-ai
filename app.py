@@ -110,9 +110,9 @@ with st.sidebar:
 
     # Process button - only show if a file is uploaded
     if uploaded_file is not None:
-        st.info(f"📄 **{uploaded_file.name}** selected")
+        st.info(f" **{uploaded_file.name}** selected")
 
-        if st.button("🚀 Process Document", type="primary", use_container_width=True):
+        if st.button("Process Document", type="primary", use_container_width=True):
             # Show a spinner while processing
             with st.spinner("Processing your document... This may take a moment!"):
                 try:
@@ -120,11 +120,11 @@ with st.sidebar:
                     clear_collection()
 
                     # Step 2: Load and split the document into chunks
-                    st.write("📖 Reading document...")
+                    st.write("Reading document...")
                     chunks = load_and_split_document(uploaded_file)
 
                     # Step 3: Store chunks in ChromaDB
-                    st.write("🧠 Learning from document...")
+                    st.write("Learning from document...")
                     store_documents(chunks)
 
                     # Step 4: Get stats about the processed document
@@ -136,14 +136,14 @@ with st.sidebar:
                     st.session_state.chat_history = []  # Clear old chat
 
                     # Show success message with stats
-                    st.success("✅ Document processed successfully!")
+                    st.success("Document processed successfully!")
                     st.write(f"📊 **Stats:**")
                     st.write(f"- Chunks created: **{stats['total_chunks']}**")
                     st.write(f"- Total characters: **{stats['total_characters']:,}**")
                     st.write(f"- Avg chunk size: **{stats['avg_chunk_size']}** chars")
 
                 except Exception as e:
-                    st.error(f"❌ Error processing document: {str(e)}")
+                    st.error(f"Error processing document: {str(e)}")
 
     # Divider
     st.divider()
@@ -152,12 +152,12 @@ with st.sidebar:
     st.header("📊 Status")
     if st.session_state.document_loaded:
         st.success(f"✅ Document loaded")
-        st.write(f"📄 **{st.session_state.document_name}**")
+        st.write(f" **{st.session_state.document_name}**")
         chunk_count = get_collection_count()
-        st.write(f"🧩 **{chunk_count}** chunks in memory")
+        st.write(f" **{chunk_count}** chunks in memory")
 
         # Button to clear the document
-        if st.button("🗑️ Clear Document", use_container_width=True):
+        if st.button("Clear Document", use_container_width=True):
             clear_collection()
             st.session_state.document_loaded = False
             st.session_state.chat_history = []
@@ -186,12 +186,12 @@ with st.sidebar:
     **DocuMind AI** uses RAG (Retrieval-Augmented Generation) to answer questions from your documents.
     
     **How it works:**
-    1. 📄 Upload your document
-    2. 🧩 It gets split into chunks
-    3. 🧠 Chunks are stored with meaning
-    4. ❓ You ask a question
-    5. 🔍 Relevant chunks are found
-    6. 🤖 Gemini answers using those chunks
+    1. Upload your document
+    2. It gets split into chunks
+    3. Chunks are stored with meaning
+    4. You ask a question
+    5. Relevant chunks are found
+    6. Gemini answers using those chunks
     """)
 
 
@@ -205,7 +205,7 @@ if not st.session_state.document_loaded:
 
     with col1:
         st.markdown("""
-        ### 📤 Step 1
+        ### Step 1
         **Upload your document**
         
         Upload any PDF or TXT file using the sidebar on the left
@@ -213,7 +213,7 @@ if not st.session_state.document_loaded:
 
     with col2:
         st.markdown("""
-        ### ⚙️ Step 2
+        ### Step 2
         **Process it**
         
         Click "Process Document" and wait for DocuMind to learn from it
@@ -221,7 +221,7 @@ if not st.session_state.document_loaded:
 
     with col3:
         st.markdown("""
-        ### 💬 Step 3
+        ### Step 3
         **Start chatting!**
         
         Ask any question about your document and get instant AI-powered answers
@@ -232,7 +232,7 @@ if not st.session_state.document_loaded:
 
 else:
     # Show chat interface if document is loaded
-    st.markdown(f"### 💬 Chat with **{st.session_state.document_name}**")
+    st.markdown(f"### Chat with **{st.session_state.document_name}**")
     st.write("Ask me anything about your document!")
 
     # Display chat history
@@ -249,7 +249,7 @@ else:
 
             # Show sources in an expandable section
             if chat["sources"]:
-                with st.expander("📚 View Sources"):
+                with st.expander("View Sources"):
                     for i, source in enumerate(chat["sources"]):
                         st.markdown(f"""
                         <div class="source-box">
@@ -270,7 +270,7 @@ else:
 
         # Get and show the answer
         with st.chat_message("assistant", avatar="🧠"):
-            with st.spinner("🔍 Searching document and generating answer..."):
+            with st.spinner("Searching document and generating answer..."):
                 result = get_answer(question)
 
             # Display the answer
@@ -279,7 +279,7 @@ else:
 
             # Display sources
             if result["sources"]:
-                with st.expander("📚 View Sources"):
+                with st.expander("View Sources"):
                     for i, source in enumerate(result["sources"]):
                         st.markdown(f"""
                         <div class="source-box">
